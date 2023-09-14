@@ -4,14 +4,21 @@ from tkinter import ttk
 import tkinter.font as tkFont
 import json
 from tkinter import Text, Scrollbar, filedialog
+import math
+    
+
+
+
+
+
 def boton_analiza():
-
     pass
+    
 def boton_error():
-
     pass
-def boton_report():
 
+
+def boton_report():
     pass
 def boton_abre():
     global archivo_actual
@@ -74,15 +81,20 @@ boton_guardar_como.pack(ipadx=25, ipady=5,pady=25)
 boton_salir = tk.Button(contenedor_botones_archivo, text="Salir", command=boton_exit,font=fuente,background="pink" )
 boton_salir.pack( ipadx=65, ipady=5,pady=25)
 # Centrar el Frame en la ventana
-
-text = Text(ventana, width=100, height=100, bd=3,background='linen')
+textae = Text(ventana,width=50, height=50,bd=3,background='linen')
+text = Text(ventana, width=50, height=50, bd=3,background='linen')
 text.pack(padx=10,pady=10,expand=True,fill="both")
+textae.pack(padx=10,pady=10, expand=True , fill="both" )
 scrollbar_vertical = Scrollbar(text, command=text.yview)
 scrollbar_vertical.pack(side=tk.RIGHT, fill=tk.Y)
 # Agregar una barra de desplazamiento horizontal al Text
 scrollbar_horizontal = Scrollbar(text, command=text.xview, orient=tk.HORIZONTAL)
 scrollbar_horizontal.pack(side=tk.BOTTOM, fill=tk.X)
+scrollbar1_vertical = Scrollbar(textae, command=textae.yview)
+scrollbar1_vertical.pack(side=tk.RIGHT, fill=tk.Y)
+# Agregar una barra de desplazamiento horizontal al Text
+scrollbar1_horizontal = Scrollbar(textae, command=textae.xview, orient=tk.HORIZONTAL)
+scrollbar1_horizontal.pack(side=tk.BOTTOM, fill=tk.X)
 ventana.grid_rowconfigure(0, weight=1)
 ventana.grid_columnconfigure(0, weight=1)
 ventana.mainloop()
-
