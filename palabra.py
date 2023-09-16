@@ -10,10 +10,10 @@ class Palabra(Expression):
         return self.palabra
     
     def getFila(self):
-        return super().getFila
+        return super().getFila()
     
     def getColumna(self):
-        return super().getColumna
+        return super().getColumna()
     
     def getPalabra(self):
         return self.palabra

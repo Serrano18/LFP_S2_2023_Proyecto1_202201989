@@ -1,0 +1,8 @@
+{
+    "error": [
+        {
+            "No": 1,
+            "descripcion": {
+                "lexema": "#",
+                "tipo": "error lexico",
+                "columna": 

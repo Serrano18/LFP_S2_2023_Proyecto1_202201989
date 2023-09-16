@@ -17,6 +17,7 @@ global instruccion
 global lista_palabras
 global lista_errores
 #estas son todas mis palabras validas es el lexico que usare
+global palabras
 palabras= [
     'operaciones', 'operacion', 'valor1', 'valor2',
     'suma', 'resta', 'multiplicacion', 'division', 'raiz', 'inverso',
@@ -29,10 +30,14 @@ numero_columna=1
 lista_palabras=[]
 instruccion=[]
 lista_errores=[]
+
 def analizador(secuencia):
     global numero_fila
     global numero_columna
     global lista_palabras
+    global lista_errores
+    numero_fila=1
+    lista_errores=[]
     palabra=''
     posicion=0
     while secuencia:
@@ -42,7 +47,7 @@ def analizador(secuencia):
             palabra,secuencia= crear_palabra(secuencia[posicion:])
             if palabra and secuencia:
                 numero_columna+=1
-                p= Palabra(palabra,numero_fila,numero_columna)    
+                p= Palabra(palabra.lower(),numero_fila,numero_columna)    
                 lista_palabras.append(p)
                 numero_columna+=len(palabra)+1
                 posicion=0
@@ -75,7 +80,7 @@ def analizador(secuencia):
         else:
             secuencia=secuencia[1:]
             posicion = 0
-            numero_columna=1
+            numero_columna+=1
 
 def crear_palabra(secuencia):
     global numero_fila
@@ -89,16 +94,18 @@ def crear_palabra(secuencia):
         if num == '\"':
             return palabra, secuencia[len(posicion):]
         else:
-            if num=='@' or num=='!' or num=='|' or num=='#' or num == '$' or num == '%' or num == '&' or num == '(' or num == ')' or num == '=' or num == '?' or num == '¿' or num=='+' or num=='-' or num=='/'or num=='*'or num =='_' or num=='¡'or num=='-' or num==';' or num=='^' or num== 'ª' or num=='º' or num=='€' or num=='½'or num=='~' or num=='°' or num=='©'or num=='·':
-                    e=(Palabra(num,numero_fila,numero_columna))
-                    lista_errores.append(e)
-                    print(num)
+            if num=='@' or num=='!' or num=='|' or num=='#' or num == '$' or num == '%' or num == '&' or num == '(' or num == ')' or num == '=' or num == '?' or num == '¿' or num=='+' or num=='-' or num=='/'or num=='*'or num =='_' or num=='¡'or num=='-' or num==';' or num=='^' or num== 'ª' or num=='º' or num=='€' or num=='½'or num=='~' or num=='°' or num=='©'or num=='·':  
+                        e=Palabra(num,numero_fila,numero_columna+len(palabra)+1)
+                        lista_errores.append(e)
+                        print(num)
             palabra+=num
     return None,None
 
 def crear_numero(secuencia):
     valornume=''
     posicion=''
+    global numero_columna
+    ncol=numero_columna
     decimal=False
     for num in secuencia:
         posicion+=num
@@ -111,15 +118,18 @@ def crear_numero(secuencia):
                 return int(valornume),secuencia[len(posicion)-1:]
         else:
             if num=='@' or num=='!' or num=='|' or num=='#' or num == '$' or num == '%' or num == '&' or num == '(' or num == ')' or num == '=' or num == '?' or num == '¿' or num=='+' or num=='-' or num=='/'or num=='*'or num =='_' or num=='¡'or num=='-' or num==';' or num=='^' or num== 'ª' or num=='º' or num=='€' or num=='½'or num=='~' or num=='°' or num=='©'or num=='·':
-                    e=(Palabra(num,numero_fila,numero_columna))
+                    e=Palabra(num,numero_fila,secuencia[len(posicion)-1:])
                     print (num)
                     lista_errores.append(e)
             valornume+=num
+            ncol+=1
     return None,None
 
 def operar():
     global instruccion
     global lista_palabras
+    global numero_columna
+    
     operacion = ''
     num1=''
     num2=''
@@ -171,7 +181,34 @@ def boton_analiza():
     
 
 def boton_error():
-    pass
+    global lista_errores
+
+    # Crear una lista de errores en el formato deseado
+    errores_json = []
+    for i, error in enumerate(lista_errores, start=1):
+        if isinstance(error, Palabra):
+            fila=error.getFila()
+            columna=error.getColumna()
+            error_info = {
+                "No": i,
+                "descripcion": {
+                    "lexema": error.getPalabra(),
+                    "tipo": "error lexico",
+                    "columna": columna,
+                    "fila": fila
+                }
+            }
+            errores_json.append(error_info)
+
+    # Guardar la lista de errores en un archivo JSON
+    with open("errores.json", "w") as archivo_errores:
+        json.dump({"errores": errores_json}, archivo_errores, indent=4)
+
+    # Mostrar los errores en el widget textae
+    textae.delete(1.0, tk.END)  # Borrar el contenido actual de textae
+    with open("errores.json", "r") as archivo_errores:
+        errores_json = json.load(archivo_errores)
+        textae.insert(tk.END, json.dumps(errores_json, indent=4))
 
 
 def boton_report():
