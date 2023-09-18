@@ -1,3 +1,4 @@
+
 from metodoamstract import Expression
 from math import *
 class Operaciones_un_valor(Expression):
@@ -6,16 +7,18 @@ class Operaciones_un_valor(Expression):
         self.tipo = tipo
         super().__init__(fila,columna)
 
-    def operar(self,arbol):
+    def funcionToken(self,arbol):
         if self.valor1:
-            num = self.valor1.operar(arbol)
-            operacion= self.tipo.operar(arbol)
+            num = self.valor1.funcionToken(arbol)
+            operacion= self.tipo.funcionToken(arbol)
             if operacion == 'seno':
                 return sin(num)
             elif operacion == 'coseno':
                 return cos(num)
             elif operacion == 'tangente':
                 return tan(num)
+            elif operacion == 'inverso':
+                return 1 / num
         return None
 
         
@@ -24,3 +27,4 @@ class Operaciones_un_valor(Expression):
     
     def getColumna(self):
         return super().getColumna
+    

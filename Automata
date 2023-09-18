@@ -1,0 +1,51 @@
+'''Terminales
+
+las letras en minusculas
+las letras mayusculas
+digitos
+punto
+corchetes
+comillas
+llaves
+dos puntos
+coma
+
+
+tokens que puede traer el archivo de entrada que serian mis palabras reservadas
+    'operaciones', 'operacion', 'valor1', 'valor2',
+    'suma', 'resta', 'multiplicacion', 'division', 'raiz', 'inverso','potencia',
+    'seno', 'coseno', 'tangente', 'mod',
+    'configuraciones', 'texto', 'fondo', 'fuente', 'forma',
+    ':', '[', '{', ',', '}', ']', '.'
+
+Segun el archivo de entrada y su estructura 
+        TENEMOS
+
+        palabras estas vienen entre ""
+        numeros vienen despues : 
+                        termian , } ]
+
+        ahora las operaciones anidadas  inician con [
+                                        terminan ],
+
+        Consideraciones a tomar en el archivo de entrada
+            este puede venir varios casos como:
+                        tabulaciones
+                        saltos de lineas
+                        espacios en blanco
+
+        ahora lo puedo hacer de dos formas 
+
+                hago que mi analizador lea {}
+                */para esto tendrian  que trabajar por niveles pero me permitiria trabajar mejor lo que son los resultados de las operaciones anidadas
+                por que es operacion el que siempre viene entre {} esto sirve para la logica
+
+                o mi analizador ignora la entrada de {} y los toma como un espacio en blanco para que solo salgan las palabras,corchetes,comas,numeros
+                tambien tendria lo que son las consideraciones esto me facilita la lectura de caracteres
+
+
+        COMO TRABAJAR EL ANALIZADOR
+        POR CLASES-OBJETOS
+        USANDO CLASES ABSTRACTAS/plantilla
+        
+'''

@@ -4,54 +4,81 @@ from tkinter import ttk
 import tkinter.font as tkFont
 import json
 from tkinter import Text, Scrollbar, filedialog
-import math
-
 from palabra import *
 from operaciones_un_valor import * 
 from operaciones import *
+import os
+from graphviz import Digraph
 
 #declaracion de las distintas listas
 global numero_fila
 global numero_columna
-global instruccion
+global operaciones_resultantes
 global lista_palabras
 global lista_errores
-#estas son todas mis palabras validas es el lexico que usare
-global palabras
-palabras= [
-    'operaciones', 'operacion', 'valor1', 'valor2',
-    'suma', 'resta', 'multiplicacion', 'division', 'raiz', 'inverso',
-    'seno', 'coseno', 'tangente', 'mod',
-    'configuraciones', 'texto', 'fondo', 'fuente', 'forma',
-    ':', '[', '{', ',', '}', ']', '.'
-]
+global palabras_graficos
+global palabras #estas son todas mis palabras reservadas que usare
+palabras= ['operaciones', 'operacion', 'valor1', 'valor2', 'suma', 'resta', 'multiplicacion', 'division', 'raiz', 'inverso','potencia',
+    'seno', 'coseno', 'tangente', 'mod','configuraciones', 'texto', 'fondo', 'fuente', 'forma',':', '[', '{', ',', '}', ']', '.']
+
 numero_fila=1
 numero_columna=1
 lista_palabras=[]
-instruccion=[]
+operaciones_resultantes=[]
 lista_errores=[]
+palabras_graficos=[]
 
 def analizador(secuencia):
     global numero_fila
     global numero_columna
     global lista_palabras
     global lista_errores
+    global palabras_graficos
+    global operaciones_resultantes
+    global palabras
     numero_fila=1
     lista_errores=[]
+    operaciones_resultantes=[]
+    lista_palabras=[]
+    palabras_graficos=[]
     palabra=''
     posicion=0
+    configuraciones=False
     while secuencia:
         num=secuencia[posicion]
         posicion +=1
         if num == '\"':
             palabra,secuencia= crear_palabra(secuencia[posicion:])
             if palabra and secuencia:
+                if palabra.lower() not in palabras:
+                    caracteres_no_permitidos = '@!|#$%&()=?¿+-/*_¡-;^ªº€½~°©·'
+                    if any(char in palabra for char in caracteres_no_permitidos):
+                        continue
+                    else:
+                        palabras_graficos.append(palabra)
+                        print (palabra)
                 numero_columna+=1
+                if not configuraciones:
+                    if palabra.lower() not in palabras:
+                            caracteres_no_permitidos = '@!|#$%&()=?¿+-/*_¡-;^ªº€½~°©·'
+                            if any(char in palabra for char in caracteres_no_permitidos):
+                                continue
+                            else:
+                                e=Palabra(palabra,numero_fila,numero_columna)
+                                lista_errores.append(e)
                 p= Palabra(palabra.lower(),numero_fila,numero_columna)    
                 lista_palabras.append(p)
                 numero_columna+=len(palabra)+1
                 posicion=0
-        elif num.isdigit():
+                if palabra.lower()=='configuraciones':
+                    configuraciones=True
+        elif num == '[' or num == ']':#Operaciones Anidadas
+            p=Palabra(num,numero_fila,numero_columna)
+            lista_palabras.append(p)
+            secuencia=secuencia[1:]
+            posicion=0
+            numero_columna+=1
+        elif num.isdigit():#alamcenar digitos
             token,secuencia = crear_numero(secuencia)
             if token and secuencia:
                 numero_columna+=1
@@ -59,28 +86,21 @@ def analizador(secuencia):
                 lista_palabras.append(p)
                 numero_columna+=len(str(token))+1
                 posicion=0
-
-        elif num == '[' or num == ']':
-            p=Palabra(num,numero_fila,numero_columna)
-            lista_palabras.append(p)
-            secuencia=secuencia[1:]
-            posicion=0
-            numero_columna+=1
-            
         #por si el texto trae saltos de lineas tabulaciones para que no falle la aplicacion
-        elif num == '\n':                       
+        elif num == '\n':                       #saltos de linea
             secuencia = secuencia[1:]
             posicion=0
             numero_columna =1
             numero_fila+=1
-        elif num == '\t':
+        elif num == '\t': #tabulaciones
             numero_columna+=4
             secuencia=secuencia[4:]
             posicion=0
-        else:
+        else: #espacios,comas,llaves
             secuencia=secuencia[1:]
             posicion = 0
             numero_columna+=1
+
 
 def crear_palabra(secuencia):
     global numero_fila
@@ -97,7 +117,7 @@ def crear_palabra(secuencia):
             if num=='@' or num=='!' or num=='|' or num=='#' or num == '$' or num == '%' or num == '&' or num == '(' or num == ')' or num == '=' or num == '?' or num == '¿' or num=='+' or num=='-' or num=='/'or num=='*'or num =='_' or num=='¡'or num=='-' or num==';' or num=='^' or num== 'ª' or num=='º' or num=='€' or num=='½'or num=='~' or num=='°' or num=='©'or num=='·':  
                         e=Palabra(num,numero_fila,numero_columna+len(palabra)+1)
                         lista_errores.append(e)
-                        print(num)
+                        
             palabra+=num
     return None,None
 
@@ -118,15 +138,14 @@ def crear_numero(secuencia):
                 return int(valornume),secuencia[len(posicion)-1:]
         else:
             if num=='@' or num=='!' or num=='|' or num=='#' or num == '$' or num == '%' or num == '&' or num == '(' or num == ')' or num == '=' or num == '?' or num == '¿' or num=='+' or num=='-' or num=='/'or num=='*'or num =='_' or num=='¡'or num=='-' or num==';' or num=='^' or num== 'ª' or num=='º' or num=='€' or num=='½'or num=='~' or num=='°' or num=='©'or num=='·':
-                    e=Palabra(num,numero_fila,secuencia[len(posicion)-1:])
-                    print (num)
+                    e=Palabra(num,numero_fila,numero_columna+len(valornume)+1)
                     lista_errores.append(e)
             valornume+=num
             ncol+=1
     return None,None
 
 def operar():
-    global instruccion
+    global operaciones_resultantes
     global lista_palabras
     global numero_columna
     
@@ -136,37 +155,36 @@ def operar():
     lista_palabras
     while lista_palabras:
         palabra = lista_palabras.pop(0)
-        if palabra.operar(None)=='operaciones':
+        if palabra.funcionToken(None)=='operaciones':
             operaciones=lista_palabras.pop(0)
-        elif palabra.operar(None)=='operacion':
+        elif palabra.funcionToken(None)=='operacion':
             operacion=lista_palabras.pop(0)
-        elif palabra.operar(None)=='valor1':
+        elif palabra.funcionToken(None)=='valor1':
             num1=lista_palabras.pop(0)
-            if num1.operar(None)=='[':
+            if num1.funcionToken(None)=='[':
                 num1=operar()
-        elif palabra.operar(None)=='valor2':
+        elif palabra.funcionToken(None)=='valor2':
             num2=lista_palabras.pop(0)
-            if num2.operar(None)=='[':
+            if num2.funcionToken(None)=='[':
                 num2=operar()
-        
         if operacion and num1 and num2:
             return (Operaciones(num1,num2,operacion,f'{operacion.getFila()}:{operacion.getColumna()}',f':{num2.getFila()}:{num2.getColumna()}'))
-        if operacion and num1 and operacion.operar(None)==('seno'or'coseno'or'tangente'):
+        if operacion and num1 and operacion.funcionToken(None)==('seno'or'coseno'or'tangente'or 'inverso'):
             return (Operaciones_un_valor(num1,operacion,f'{operacion.getFila()}:{operacion.getColumna()}',f':{num1.getFila()}:{num1.getColumna()}'))
 
 def funcionan():
-    global instruccion
+    global operaciones_resultantes
     resultado=[]
     while True:
         operacion=operar()
         if operacion:
-            resultado.append(f"{operacion.tipo.operar(None)}: {operacion.operar(None)}")
-            instruccion.append(operacion)
+            resultado.append(f"{operacion.tipo.funcionToken(None)}: {operacion.funcionToken(None)}")
+            operaciones_resultantes.append(operacion)
         else:
             break
 
-    for instruc in instruccion:
-        instruc.operar(None)
+    for operacionesr in operaciones_resultantes:
+        operacionesr.funcionToken(None)
 
     textae.delete(1.0, tk.END)  # Borrar el contenido actual de textae
     for res in resultado:
@@ -201,18 +219,78 @@ def boton_error():
             errores_json.append(error_info)
 
     # Guardar la lista de errores en un archivo JSON
-    with open("errores.json", "w") as archivo_errores:
+    with open("Resultados_202201989.json", "w") as archivo_errores:
         json.dump({"errores": errores_json}, archivo_errores, indent=4)
 
     # Mostrar los errores en el widget textae
     textae.delete(1.0, tk.END)  # Borrar el contenido actual de textae
-    with open("errores.json", "r") as archivo_errores:
+    with open("Resultados_202201989.json", "r") as archivo_errores:
         errores_json = json.load(archivo_errores)
         textae.insert(tk.END, json.dumps(errores_json, indent=4))
 
+#Para graficar
+
+
+
+def graficar_operaciones(operaciones_resultantes):
+    global palabras_graficos
+    dot = Digraph(comment="OPERACIONES")
+    dot.attr(label=palabras_graficos[0])
+    def graficar_operacion(operacion, parent=None, nodos_creados={}):
+        if isinstance(operacion, Operaciones):
+            nodo_operacion = f"{operacion.tipo.funcionToken(None)} : {operacion.funcionToken(None)}"
+            dot.node(f"{nodo_operacion}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+            if parent:
+                dot.edge(parent, nodo_operacion)
+
+            # Si valor1 es una operación, llamar recursivamente para graficarlo
+            if isinstance(operacion.valor1, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor1, nodo_operacion, nodos_creados)
+            else:
+                valor1_id = f"valor1_{id(operacion.valor1)}"
+                if valor1_id not in nodos_creados:
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken(None)}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+                    nodos_creados[valor1_id] = True
+                dot.edge(nodo_operacion, valor1_id)
+
+            # Si valor2 es una operación, llamar recursivamente para graficarlo
+            if isinstance(operacion.valor2, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor2, nodo_operacion, nodos_creados)
+            else:
+                valor2_id = f"valor2_{id(operacion.valor2)}"
+                if valor2_id not in nodos_creados:
+                    dot.node(f"{valor2_id}", f"{operacion.valor2.funcionToken(None)}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+                    nodos_creados[valor2_id] = True
+                dot.edge(nodo_operacion, valor2_id)
+
+        elif isinstance(operacion, Operaciones_un_valor):
+            nodo_operacion = f"{operacion.tipo.funcionToken(None)} : {operacion.funcionToken(None)}"
+            dot.node(f"{nodo_operacion}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+            if parent:
+                dot.edge(parent, nodo_operacion)
+
+            # Llamar recursivamente para graficar el valor de la operación
+            if isinstance(operacion.valor1, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor1, nodo_operacion, nodos_creados)
+            else:
+                valor1_id = f"valor1_{id(operacion.valor1)}"
+                if valor1_id not in nodos_creados:
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken(None)}",color="{palabras_graficos[1]}",shape="{palabras_graficos[3]}",fontcolor="{palabras_graficos[2]}")
+                    nodos_creados[valor1_id] = True
+                dot.edge(nodo_operacion, valor1_id)
+
+    for operacion in operaciones_resultantes:
+        graficar_operacion(operacion, nodos_creados={})
+
+    dot.render('operaciones_resultantes', view=True)
+
 
 def boton_report():
-    pass
+    graficar_operaciones(operaciones_resultantes)
+
+    #graficar_operaciones(operaciones_resultantes)
+
+
 
 
 #ARCHIVOS
@@ -242,6 +320,8 @@ def boton_guardac():
 
 def boton_exit():
     ventana.quit()
+
+
 
 
 

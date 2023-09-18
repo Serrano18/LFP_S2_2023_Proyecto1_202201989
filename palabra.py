@@ -1,3 +1,4 @@
+
 from metodoamstract import Expression
 
 class Palabra(Expression):
@@ -6,7 +7,7 @@ class Palabra(Expression):
         self.palabra = palabra
         super().__init__(fila,columna)
 
-    def operar(self, arbol):
+    def funcionToken(self, arbol):
         return self.palabra
     
     def getFila(self):

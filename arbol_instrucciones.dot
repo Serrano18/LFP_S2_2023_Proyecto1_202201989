@@ -1,0 +1,7 @@
+digraph G {
+node [shape=box];
+label="�rbol de Instrucciones";
+operaciones_resultantes_0 [label="multiplicacion: 4.756062250354968"];
+instruccion_1 [label="division: 2.3333333333333335"];
+instruccion_0 -> instruccion_1;
+}

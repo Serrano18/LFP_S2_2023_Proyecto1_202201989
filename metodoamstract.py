@@ -1,3 +1,4 @@
+
 from abc import ABC,abstractmethod
 
 class Expression(ABC):
@@ -6,7 +7,7 @@ class Expression(ABC):
         self.columna = columna
         
     @abstractmethod
-    def operar(self,arbol):
+    def funcionToken(self,arbol):
         pass
     @abstractmethod
     def getFila(self):
