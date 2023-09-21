@@ -1,8 +1,10 @@
 # Manual Técnico: Aplicación de Análisis Léxico y Operaciones Matemáticas
 
 ### Universidad San Carlos de Guatemala
-Escuela de Ciencias y Sistemas
+Escuela de Ciencias y Sistemas 
+
 Segundo Semestre 2023
+
 Lenguajes Formales y de Programación
 
 ## Descripción del Proyecto
