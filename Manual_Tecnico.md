@@ -1,8 +1,8 @@
 # Manual Técnico: Aplicación de Análisis Léxico y Operaciones Matemáticas
 
 ### Universidad San Carlos de Guatemala
-##### Escuela de Ciencias y Sistemas
-##### Segundo Semestre 2023
+Escuela de Ciencias y Sistemas
+Segundo Semestre 2023
 
 ## Nombre del Curso
 Lenguajes Formales y de Programación
@@ -13,7 +13,7 @@ Este proyecto consiste en una aplicación que realiza análisis léxico de un le
 
 ## Objetivos
 * Objetivo General
-    *Desarrollar un sistema de análisis léxico para reconocer un lenguaje dado, gestionar archivos y generar informes de análisis léxico.
+    * Desarrollar un sistema de análisis léxico para reconocer un lenguaje dado, gestionar archivos y generar informes de análisis léxico.
 
 * Objetivos Específicos
     * Analizador Léxico: Implementar un analizador léxico basado en estados para reconocer tokens y palabras reservadas en el código fuente.
@@ -83,9 +83,7 @@ Este proyecto consiste en una aplicación que realiza análisis léxico de un le
 - Se utilizan funciones para abrir, guardar y guardar como archivos con extensiones .json.
 
 ## Ejemplo de Uso
-- Describe cómo se utiliza la aplicación, como abrir un archivo JSON con código fuente, analizarlo y generar informes.
+- Al ejecutar la aplicacion se mostrara una vista amigable que funciona por medio de botones hay 7 botones de los cuales su funcion se explica arriba, la aplicacion mostrara el archivo abierto en el text de arriba y en el de abajo mostrara los resultados del analisis como el archivo de errores.
 
-## Recursos Adicionales
-- Menciona recursos adicionales como el uso de Markdown para formatear documentación y la biblioteca tabulate para formatear tablas.
 
 ---
