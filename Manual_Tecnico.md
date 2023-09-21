@@ -1,56 +1,91 @@
 # Manual Técnico: Aplicación de Análisis Léxico y Operaciones Matemáticas
 
+### Universidad San Carlos de Guatemala
+##### Escuela de Ciencias y Sistemas
+##### Segundo Semestre 2023
+
+## Nombre del Curso
+Lenguajes Formales y de Programación
+
 ## Descripción del Proyecto
-Este proyecto consiste en una aplicación que realiza análisis léxico de un lenguaje de programación personalizado y ejecuta operaciones matemáticas. La aplicación fue desarrollada por María Patricia Serrano Ramírez como parte del curso "Lenguajes Formales y de Programación" en la Universidad San Carlos de Guatemala durante el segundo semestre de 2023.
+Este proyecto consiste en una aplicación que realiza análisis léxico de un lenguaje de programación personalizado y ejecuta operaciones matemáticas. 
 
-## Componentes del Proyecto
 
-### 1. Analizador Léxico
-El analizador léxico es la parte principal de la aplicación y se encarga de procesar una secuencia de caracteres en formato de lenguaje personalizado. A continuación, se describen sus características clave:
+## Objetivos
+* Objetivo General
+    *Desarrollar un sistema de análisis léxico para reconocer un lenguaje dado, gestionar archivos y generar informes de análisis léxico.
 
-- **Clases de Expresiones**: El analizador léxico utiliza clases de expresiones para representar las diferentes estructuras del lenguaje, como operaciones matemáticas y palabras reservadas.
+* Objetivos Específicos
+    * Analizador Léxico: Implementar un analizador léxico basado en estados para reconocer tokens y palabras reservadas en el código fuente.
+    * Gestión de Archivos: Crear funciones para abrir, guardar y guardar como archivos con formato JSON.
+    * Generación de Informes: Generar informes de análisis léxico que incluyan detalles sobre tokens y errores, y guardarlos en un archivo JSON.
+    * Interfaz Gráfica: Diseñar una interfaz gráfica de usuario utilizando la biblioteca Tkinter para cargar y analizar código fuente.
+    * Graficación de Árboles: Utilizar la biblioteca Graphviz para generar y mostrar diagramas de árbol de las operaciones analizadas.
+   
 
-- **Operaciones Matemáticas**: La aplicación puede realizar operaciones matemáticas como suma, resta, multiplicación, división, potenciación, raíz cuadrada y módulo.
 
-- **Función de Análisis**: La función `funcionToken()` en las clases de expresiones se utiliza para realizar análisis léxico y ejecutar las operaciones matemáticas.
+---
+## Implementación
 
-### 2. Clase Producto
-La clase Producto representa un artículo del inventario y contiene los siguientes atributos:
+### Clase Expression
+- Clase abstracta que sirve como base para las clases Palabra, Operaciones y Operaciones_un_valor.
+- Define una función abstracta `funcionToken()` que debe implementarse en las clases derivadas.
 
-- `nombre`: Nombre del producto.
-- `cantidad`: Cantidad disponible del producto.
-- `precio_unitario`: Precio unitario del producto.
-- `ubicacion`: Ubicación física del producto en el inventario.
+### Clase Palabra
+- Representa una palabra o token en el código fuente.
+- Almacena la palabra, la fila y la columna donde se encuentra.
 
-### 3. Funcionalidades Principales
+### Clase Operaciones
+- Representa una operación que involucra dos valores (valor1 y valor2) y un tipo de operación (suma, resta, etc.).
+- Implementa la función `funcionToken()` para realizar la operación correspondiente.
 
-#### Cargar Inventario Inicial
-La función `cargar_inventario(archivo)` se encarga de cargar el inventario inicial desde un archivo de formato .inv. Los productos se almacenan en una lista y se instancia un objeto Producto para cada uno.
+### Clase Operaciones_un_valor
+- Representa una operación que involucra un solo valor (valor1) y un tipo de operación (seno, coseno, etc.).
+- Implementa la función `funcionToken()` para realizar la operación correspondiente.
 
-#### Cargar Instrucciones de Movimientos
-La función `cargar_movimientos(inventario, archivo)` procesa las instrucciones de movimientos desde un archivo de formato .mov. Se pueden agregar stock a un producto existente o vender productos, ajustando las cantidades disponibles en consecuencia.
+### Función analizador()
+- Analiza el código fuente proporcionado y extrae las palabras y operaciones relevantes.
+- Identifica errores léxicos y los almacena en la lista `lista_errores`.
 
-#### Crear Informe de Inventario
-La función `informe(inventario, archivo)` genera un informe de inventario en formato tabular y lo guarda en un archivo de texto .txt. El informe incluye detalles como nombre del producto, cantidad disponible, precio unitario, valor total y ubicación. La información se formatea utilizando la librería tabulate.
+### Función crear_palabra()
+- Utilizada en el análisis léxico para crear palabras a partir de caracteres en el código fuente.
 
-#### Menú de Interacción
-La función `menu()` muestra un menú interactivo para el usuario, que permite cargar el inventario inicial, cargar movimientos e imprimir informes de inventario y salir del programa.
+### Función crear_numero()
+- Utilizada para crear números a partir de caracteres en el código fuente.
 
-### 4. Manejo de Archivos
-- **Formato de Inventario (.inv)**: Cada línea del archivo contiene los datos de un producto en el formato "crear_producto nombre;cantidad;precio_unitario;ubicacion".
+### Función operar()
+- Implementa un analizador sintáctico para reconocer y realizar operaciones de acuerdo con la jerarquía de operaciones.
+- Crea objetos Operaciones o Operaciones_un_valor y los almacena en la lista `operaciones_resultantes`.
 
-- **Formato de Movimientos (.mov)**: Cada línea del archivo contiene una instrucción de movimiento en el formato "agregar_stock nombre;cantidad;ubicacion" o "vender_producto nombre;cantidad;ubicacion".
+### Función funcionan()
+- Llama a `operar()` repetidamente hasta que se hayan procesado todas las operaciones.
+- Muestra los resultados en el widget `textae`.
 
-- **Formato de Informe (.txt)**: El informe de inventario se guarda en un archivo de texto en formato tabular. La librería tabulate se utiliza para formatear la tabla.
+### Función graficar_operaciones()
+- Utiliza la biblioteca Graphviz para generar un diagrama de árbol de las operaciones analizadas y lo guarda en un archivo.
 
-### 5. Ejemplo de Uso
-Ejecutando el programa, se mostrará un menú desde el cual se pueden realizar las diferentes operaciones del sistema de inventario, como cargar el inventario inicial, cargar movimientos e imprimir informes.
+## Funciones relacionadas con la interfaz gráfica
 
-### 6. Recursos Adicionales
-Además del código proporcionado, se recomienda utilizar recursos como:
+### boton_analiza()
+- Llama a `analizador()` y `funcionan()` para analizar el código fuente y mostrar los resultados.
 
-- **Markdown** para formatear y documentar textos.
-- **Librería tabulate** para formatear tablas.
+### boton_error()
+- Crea un archivo JSON que contiene los errores léxicos detectados y los muestra en el widget `textae`.
 
-## Conclusiones
-Este proyecto es un ejemplo de una aplicación que combina análisis léxico y operaciones matemáticas para gestionar un sistema de inventario. El uso de clases de expresiones facilita el análisis de las estructuras del lenguaje personalizado y la ejecución de operaciones matemáticas. Además, la aplicación proporciona una interfaz de usuario interactiva a través de un menú. Este manual técnico proporciona una descripción detallada de las funcionalidades y componentes clave de la aplicación.
+### boton_report()
+- Llama a `graficar_operaciones()` para generar y mostrar el diagrama de árbol de las operaciones.
+
+## Funciones relacionadas con la gestión de archivos y la interfaz de usuario
+
+### Manejo de Archivos
+- El formato del archivo de código fuente es JSON.
+- El formato del archivo de errores es JSON.
+- Se utilizan funciones para abrir, guardar y guardar como archivos con extensiones .json.
+
+## Ejemplo de Uso
+- Describe cómo se utiliza la aplicación, como abrir un archivo JSON con código fuente, analizarlo y generar informes.
+
+## Recursos Adicionales
+- Menciona recursos adicionales como el uso de Markdown para formatear documentación y la biblioteca tabulate para formatear tablas.
+
+---
