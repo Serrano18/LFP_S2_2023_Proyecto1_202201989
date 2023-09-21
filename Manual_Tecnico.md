@@ -3,8 +3,6 @@
 ### Universidad San Carlos de Guatemala
 Escuela de Ciencias y Sistemas
 Segundo Semestre 2023
-
-## Nombre del Curso
 Lenguajes Formales y de Programación
 
 ## Descripción del Proyecto
