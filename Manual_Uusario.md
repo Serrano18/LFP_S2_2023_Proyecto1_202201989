@@ -18,9 +18,6 @@ La ventana principal de la aplicación es la interfaz gráfica principal donde s
 
 ![Vista Principal](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Imagenes/VentanaPrinicpal.png)
 
-## Barra de Menú
-
-La barra de menú en la parte superior de la ventana contiene opciones para abrir, guardar y configurar la aplicación. Además, ofrece acceso a funciones adicionales y configuraciones avanzadas.
 
 ## Área de Edición de Código
 
@@ -28,7 +25,7 @@ El área de edición de código es una caja de texto grande donde puedes ingresa
 
 ![Area de Texto](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Imagenes/Cuadros%20de%20Texto.png)
 
-## Botones y Funciones
+# Botones y Funciones
 
 La parte inferior de la ventana principal contiene botones que realizan diversas funciones. Aquí se describe la función de cada botón:
 ![Botón Analizar](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Imagenes/BotonesAnalizador.png)
