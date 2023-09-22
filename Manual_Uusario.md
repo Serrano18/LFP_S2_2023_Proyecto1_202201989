@@ -16,7 +16,7 @@ La vista de la aplicación del Analizador Léxico se compone de una ventana prin
 
 La ventana principal de la aplicación es la interfaz gráfica principal donde se lleva a cabo todo el proceso de análisis léxico. A continuación, se describen los elementos clave de esta vista:
 
-![Vista Principal](Imagenes/VentanaPrincipal.png)
+![Vista Principal](https://postimg.cc/HJZ6SyXM)
 
 ## Barra de Menú
 
