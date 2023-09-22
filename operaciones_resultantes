@@ -1,43 +1,34 @@
 // OPERACIONES
 digraph {
 	label=Operacione
-	"suma : 100005.32" [color=blue fontcolor=red shape=box]
-	"potencia : 100000.0" [color=blue fontcolor=red shape=box]
-	"suma ":" 100005.32" -> "potencia ":" 100000.0"
-	valor1_2221479494736 [label=10 color=blue fontcolor=red shape=box]
-	"potencia ":" 100000.0" -> valor1_2221479494736
-	"division : 5.0" [color=blue fontcolor=red shape=box]
-	"potencia ":" 100000.0" -> "division ":" 5.0"
-	valor1_2221479496016 [label=15 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor1_2221479496016
-	valor2_2221479496208 [label=3 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor2_2221479496208
-	valor2_2221479496400 [label=5.32 color=blue fontcolor=red shape=box]
-	"suma ":" 100005.32" -> valor2_2221479496400
-	"resta : -995.5" [color=blue fontcolor=red shape=box]
-	valor1_2221479496912 [label=4.5 color=blue fontcolor=red shape=box]
-	"resta ":" -995.5" -> valor1_2221479496912
+	"suma : 999.18" [color=blue fontcolor=red shape=box]
+	"resta : -0.8200000000000003" [color=blue fontcolor=red shape=box]
+	"suma ":" 999.18" -> "resta ":" -0.8200000000000003"
+	valor1_2579265039376 [label=4.5 color=blue fontcolor=red shape=box]
+	"resta ":" -0.8200000000000003" -> valor1_2579265039376
+	valor2_2579265039056 [label=5.32 color=blue fontcolor=red shape=box]
+	"resta ":" -0.8200000000000003" -> valor2_2579265039056
 	"potencia : 1000" [color=blue fontcolor=red shape=box]
-	"resta ":" -995.5" -> "potencia ":" 1000"
-	valor1_2221479497232 [label=10 color=blue fontcolor=red shape=box]
-	"potencia ":" 1000" -> valor1_2221479497232
-	valor2_2221479497680 [label=3 color=blue fontcolor=red shape=box]
-	"potencia ":" 1000" -> valor2_2221479497680
+	"suma ":" 999.18" -> "potencia ":" 1000"
+	valor1_2579265038160 [label=10 color=blue fontcolor=red shape=box]
+	"potencia ":" 1000" -> valor1_2579265038160
+	valor2_2579265037520 [label=3 color=blue fontcolor=red shape=box]
+	"potencia ":" 1000" -> valor2_2579265037520
 	"suma : 6.213996663600558" [color=blue fontcolor=red shape=box]
 	"seno : 0.8939966636005579" [color=blue fontcolor=red shape=box]
 	"suma ":" 6.213996663600558" -> "seno ":" 0.8939966636005579"
-	valor1_2221479498640 [label=90 color="{palabras_graficos[1]}" fontcolor="{palabras_graficos[2]}" shape="{palabras_graficos[3]}"]
-	"seno ":" 0.8939966636005579" -> valor1_2221479498640
-	valor2_2221479498832 [label=5.32 color=blue fontcolor=red shape=box]
-	"suma ":" 6.213996663600558" -> valor2_2221479498832
+	valor1_2579265040976 [label=90 color="{palabras_graficos[1]}" fontcolor="{palabras_graficos[2]}" shape="{palabras_graficos[3]}"]
+	"seno ":" 0.8939966636005579" -> valor1_2579265040976
+	valor2_2579265031376 [label=5.32 color=blue fontcolor=red shape=box]
+	"suma ":" 6.213996663600558" -> valor2_2579265031376
 	"multiplicacion : 21" [color=blue fontcolor=red shape=box]
-	valor1_2221479499344 [label=7 color=blue fontcolor=red shape=box]
-	"multiplicacion ":" 21" -> valor1_2221479499344
-	valor2_2221479499600 [label=3 color=blue fontcolor=red shape=box]
-	"multiplicacion ":" 21" -> valor2_2221479499600
+	valor1_2579265042896 [label=7 color=blue fontcolor=red shape=box]
+	"multiplicacion ":" 21" -> valor1_2579265042896
+	valor2_2579265042128 [label=3 color=blue fontcolor=red shape=box]
+	"multiplicacion ":" 21" -> valor2_2579265042128
 	"division : 5.0" [color=blue fontcolor=red shape=box]
-	valor1_2221479499984 [label=15 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor1_2221479499984
-	valor2_2221479500112 [label=3 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor2_2221479500112
+	valor1_2579265041808 [label=15 color=blue fontcolor=red shape=box]
+	"division ":" 5.0" -> valor1_2579265041808
+	valor2_2579265043728 [label=3 color=blue fontcolor=red shape=box]
+	"division ":" 5.0" -> valor2_2579265043728
 }
