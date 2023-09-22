@@ -48,17 +48,29 @@ La parte inferior de la ventana principal contiene botones que realizan diversas
 - **Descripción:** Este botón genera un informe detallado del análisis léxico en formato PDF.
 - **Acción:** Al hacer clic en este botón, se generará un informe PDF que contiene información sobre las operaciones realizadas durante el análisis.
 
+## Botones y Funciones de Archivo
 
+![Botón Analizar](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Imagenes/BotonesArchivo.png)
 
 ### Botón "Abrir Código Fuente"
 
 - **Descripción:** Este botón permite cargar un archivo JSON que contiene el código fuente que deseas analizar.
 - **Acción:** Al hacer clic en este botón, se abrirá un cuadro de diálogo que te permitirá seleccionar un archivo JSON para cargar.
 ![Botón Analizar](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Imagenes/TextroArchivo.png)
-### Botón "Guardar Resultados"
+### Botón "Guardar "
 
-- **Descripción:** Este botón te permite guardar los resultados del análisis en un archivo JSON.
-- **Acción:** Al hacer clic en este botón, se guardará un archivo JSON con los resultados del análisis léxico.
+- **Descripción:** Este botón te permite guardar los cambios del archivo JSON.
+- **Acción:** Al hacer clic en este botón, se guardará los cambios del archivo.
+
+### Botón "Guardar Como"
+
+- **Descripción:** Este botón te permite guardar los cambios del archivo JSON en un nuevo archivo
+- **Acción:** Al hacer clic en este botón, se guardará un archivo JSON con un nuevo nombre.
+
+### Salir"
+
+- **Descripción:** Este botón te permite terminar la ejecucion de la aplicacion
+- **Acción:** Al hacer clic en este botón, se cerrara la aplicacion.
 
 
 
