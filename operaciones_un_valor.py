@@ -1,16 +1,16 @@
 
-from metodoamstract import Expression
+from ClasePadre import Padre
 from math import *
-class Operaciones_un_valor(Expression):
+class Operaciones_un_valor(Padre):
     def __init__(self, valor1,tipo,fila,columna):
         self.valor1 = valor1
         self.tipo = tipo
         super().__init__(fila,columna)
 
-    def funcionToken(self,arbol):
+    def funcionToken(self):
         if self.valor1:
-            num = self.valor1.funcionToken(arbol)
-            operacion= self.tipo.funcionToken(arbol)
+            num = self.valor1.funcionToken()
+            operacion= self.tipo.funcionToken()
             if operacion == 'seno':
                 return sin(num)
             elif operacion == 'coseno':

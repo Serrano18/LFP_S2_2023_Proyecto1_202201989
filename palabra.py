@@ -1,13 +1,13 @@
 
-from metodoamstract import Expression
+from ClasePadre import Padre
 
-class Palabra(Expression):
+class Palabra(Padre):
     
     def __init__(self,palabra,fila,columna):
         self.palabra = palabra
         super().__init__(fila,columna)
 
-    def funcionToken(self, arbol):
+    def funcionToken(self):
         return self.palabra
     
     def getFila(self):

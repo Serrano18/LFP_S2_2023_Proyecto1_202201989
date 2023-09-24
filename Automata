@@ -46,6 +46,7 @@ Segun el archivo de entrada y su estructura
 
         COMO TRABAJAR EL ANALIZADOR
         POR CLASES-OBJETOS
-        USANDO CLASES ABSTRACTAS/plantilla
+        USANDO una clase padre para almacenar posiciones
+        
         
 '''

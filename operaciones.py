@@ -1,21 +1,21 @@
 
-from metodoamstract import Expression
+from ClasePadre import Padre
 
-class Operaciones(Expression):
+class Operaciones(Padre):
     def __init__(self, valor1,valor2,tipo,fila,columna):
         self.valor1 = valor1
         self.valor2 = valor2
         self.tipo = tipo
         super().__init__(fila,columna)
 
-    def funcionToken(self, arbol):
+    def funcionToken(self):
         num1=''
         num2=''
-        operacion=self.tipo.funcionToken(arbol)
+        operacion=self.tipo.funcionToken()
         if self.valor1!=None:
-            num1=self.valor1.funcionToken(arbol)
+            num1=self.valor1.funcionToken()
         if self.valor2!=None:
-            num2=self.valor2.funcionToken(arbol)
+            num2=self.valor2.funcionToken()
         #Realizar las operaciones
         if operacion == 'suma':
             return num1 + num2

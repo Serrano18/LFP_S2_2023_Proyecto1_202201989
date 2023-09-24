@@ -155,21 +155,21 @@ def operar():
     lista_palabras
     while lista_palabras:
         palabra = lista_palabras.pop(0)
-        if palabra.funcionToken(None)=='operaciones':
+        if palabra.funcionToken()=='operaciones':
             operaciones=lista_palabras.pop(0)
-        elif palabra.funcionToken(None)=='operacion':
+        elif palabra.funcionToken()=='operacion':
             operacion=lista_palabras.pop(0)
-        elif palabra.funcionToken(None)=='valor1':
+        elif palabra.funcionToken()=='valor1':
             num1=lista_palabras.pop(0)
-            if num1.funcionToken(None)=='[':
+            if num1.funcionToken()=='[':
                 num1=operar()
-        elif palabra.funcionToken(None)=='valor2':
+        elif palabra.funcionToken()=='valor2':
             num2=lista_palabras.pop(0)
-            if num2.funcionToken(None)=='[':
+            if num2.funcionToken()=='[':
                 num2=operar()
         if operacion and num1 and num2:
             return (Operaciones(num1,num2,operacion,f'{operacion.getFila()}:{operacion.getColumna()}',f':{num2.getFila()}:{num2.getColumna()}'))
-        if operacion and num1 and operacion.funcionToken(None)==('seno'or'coseno'or'tangente'or 'inverso'):
+        if operacion and num1 and operacion.funcionToken()==('seno'or'coseno'or'tangente'or 'inverso'):
             return (Operaciones_un_valor(num1,operacion,f'{operacion.getFila()}:{operacion.getColumna()}',f':{num1.getFila()}:{num1.getColumna()}'))
 
 def funcionan():
@@ -178,13 +178,13 @@ def funcionan():
     while True:
         operacion=operar()
         if operacion:
-            resultado.append(f"{operacion.tipo.funcionToken(None)}: {operacion.funcionToken(None)}")
+            resultado.append(f"{operacion.tipo.funcionToken()}: {operacion.funcionToken()}")
             operaciones_resultantes.append(operacion)
         else:
             break
 
     for operacionesr in operaciones_resultantes:
-        operacionesr.funcionToken(None)
+        operacionesr.funcionToken()
 
     textae.delete(1.0, tk.END)  # Borrar el contenido actual de textae
     for res in resultado:
@@ -238,7 +238,7 @@ def graficar_operaciones(operaciones_resultantes):
     dot.attr(label=palabras_graficos[0])
     def graficar_operacion(operacion, parent=None, nodos_creados={}):
         if isinstance(operacion, Operaciones):
-            nodo_operacion = f"{operacion.tipo.funcionToken(None)} : {operacion.funcionToken(None)}"
+            nodo_operacion = f"{operacion.tipo.funcionToken()} : {operacion.funcionToken()}"
             dot.node(f"{nodo_operacion}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
             if parent:
                 dot.edge(parent, nodo_operacion)
@@ -249,7 +249,7 @@ def graficar_operaciones(operaciones_resultantes):
             else:
                 valor1_id = f"valor1_{id(operacion.valor1)}"
                 if valor1_id not in nodos_creados:
-                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken(None)}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken()}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
                     nodos_creados[valor1_id] = True
                 dot.edge(nodo_operacion, valor1_id)
 
@@ -259,12 +259,12 @@ def graficar_operaciones(operaciones_resultantes):
             else:
                 valor2_id = f"valor2_{id(operacion.valor2)}"
                 if valor2_id not in nodos_creados:
-                    dot.node(f"{valor2_id}", f"{operacion.valor2.funcionToken(None)}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
+                    dot.node(f"{valor2_id}", f"{operacion.valor2.funcionToken()}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
                     nodos_creados[valor2_id] = True
                 dot.edge(nodo_operacion, valor2_id)
 
         elif isinstance(operacion, Operaciones_un_valor):
-            nodo_operacion = f"{operacion.tipo.funcionToken(None)} : {operacion.funcionToken(None)}"
+            nodo_operacion = f"{operacion.tipo.funcionToken()} : {operacion.funcionToken()}"
             dot.node(f"{nodo_operacion}",color=f"{palabras_graficos[1]}",shape=f"{palabras_graficos[3]}",fontcolor=f"{palabras_graficos[2]}")
             if parent:
                 dot.edge(parent, nodo_operacion)
@@ -275,7 +275,7 @@ def graficar_operaciones(operaciones_resultantes):
             else:
                 valor1_id = f"valor1_{id(operacion.valor1)}"
                 if valor1_id not in nodos_creados:
-                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken(None)}",color="{palabras_graficos[1]}",shape="{palabras_graficos[3]}",fontcolor="{palabras_graficos[2]}")
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken()}",color="{palabras_graficos[1]}",shape="{palabras_graficos[3]}",fontcolor="{palabras_graficos[2]}")
                     nodos_creados[valor1_id] = True
                 dot.edge(nodo_operacion, valor1_id)
 
