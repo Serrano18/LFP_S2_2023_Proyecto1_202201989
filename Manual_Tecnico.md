@@ -87,5 +87,5 @@ Este proyecto consiste en una aplicación que realiza análisis léxico de un le
 
 ## AFD 
 - A continuacion una imagen del AFD Y la Gramatica
-  (https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Automata.jpeg)
+  ![Automata](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Automata.jpeg)
 ---
