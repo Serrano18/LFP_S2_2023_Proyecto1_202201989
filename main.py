@@ -231,9 +231,11 @@ def boton_error():
 #Para graficar
 
 
-
+'''
 def graficar_operaciones(operaciones_resultantes):
     global palabras_graficos
+    global nodos_creados
+    nodos_creados={}
     dot = Digraph(comment="OPERACIONES")
     dot.attr(label=palabras_graficos[0])
     def graficar_operacion(operacion, parent=None, nodos_creados={}):
@@ -283,12 +285,63 @@ def graficar_operaciones(operaciones_resultantes):
         graficar_operacion(operacion, nodos_creados={})
 
     dot.render('operaciones_resultantes', view=True)
+'''
+def graficar_operaciones(operaciones_resultantes):
+    global palabras_graficos
+    global nodos_creados
+    nodos_creados = {}
+    dot = Digraph(comment="OPERACIONES")
+    dot.attr(label=palabras_graficos[0])
+
+    def graficar_operacion(operacion, parent=None):
+        if isinstance(operacion, Operaciones):
+            nodo_operacion = f"{operacion.tipo.funcionToken()} : {operacion.funcionToken()}"
+            dot.node(f"{nodo_operacion}", color=f"{palabras_graficos[1]}", shape=f"{palabras_graficos[3]}", fontcolor=f"{palabras_graficos[2]}")
+            if parent:
+                dot.edge(parent, nodo_operacion)
+
+            if isinstance(operacion.valor1, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor1, nodo_operacion)
+            else:
+                valor1_id = f"valor1_{id(operacion.valor1)}"
+                if valor1_id not in nodos_creados:
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken()}", color=f"{palabras_graficos[1]}", shape=f"{palabras_graficos[3]}", fontcolor=f"{palabras_graficos[2]}")
+                    nodos_creados[valor1_id] = True
+                dot.edge(nodo_operacion, valor1_id)
+
+            if isinstance(operacion.valor2, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor2, nodo_operacion)
+            else:
+                valor2_id = f"valor2_{id(operacion.valor2)}"
+                if valor2_id not in nodos_creados:
+                    dot.node(f"{valor2_id}", f"{operacion.valor2.funcionToken()}", color=f"{palabras_graficos[1]}", shape=f"{palabras_graficos[3]}", fontcolor=f"{palabras_graficos[2]}")
+                    nodos_creados[valor2_id] = True
+                dot.edge(nodo_operacion, valor2_id)
+
+        elif isinstance(operacion, Operaciones_un_valor):
+            nodo_operacion = f"{operacion.tipo.funcionToken()} : {operacion.funcionToken()}"
+            dot.node(f"{nodo_operacion}", color=f"{palabras_graficos[1]}", shape=f"{palabras_graficos[3]}", fontcolor=f"{palabras_graficos[2]}")
+            if parent:
+                dot.edge(parent,nodo_operacion)
+
+            if isinstance(operacion.valor1, (Operaciones, Operaciones_un_valor)):
+                graficar_operacion(operacion.valor1, nodo_operacion)
+            else:
+                valor1_id = f"valor1_{id(operacion.valor1)}"
+                if valor1_id not in nodos_creados:
+                    dot.node(f"{valor1_id}", f"{operacion.valor1.funcionToken()}", color=f"{palabras_graficos[1]}", shape=f"{palabras_graficos[3]}", fontcolor=f"{palabras_graficos[2]}")
+                    nodos_creados[valor1_id] = True
+                dot.edge(nodo_operacion, valor1_id)
+
+    for operacion in operaciones_resultantes:
+        graficar_operacion(operacion)
+
+    dot.render('operaciones_resultantes', view=True)
 
 
 def boton_report():
     graficar_operaciones(operaciones_resultantes)
 
-    #graficar_operaciones(operaciones_resultantes)
 
 
 
