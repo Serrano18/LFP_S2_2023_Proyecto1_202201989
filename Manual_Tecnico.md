@@ -85,5 +85,7 @@ Este proyecto consiste en una aplicación que realiza análisis léxico de un le
 ## Ejemplo de Uso
 - Al ejecutar la aplicacion se mostrara una vista amigable que funciona por medio de botones hay 7 botones de los cuales su funcion se explica arriba, la aplicacion mostrara el archivo abierto en el text de arriba y en el de abajo mostrara los resultados del analisis como el archivo de errores.
 
-
+## AFD 
+- A continuacion una imagen del AFD Y la Gramatica
+  ![Automata](https://github.com/Serrano18/LFP_S2_2023_Proyecto1_202201989/blob/main/Automata.jpeg)
 ---
