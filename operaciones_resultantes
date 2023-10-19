@@ -1,43 +1,139 @@
 // OPERACIONES
 digraph {
-	label=Operacione
-	"suma : 100005.32" [color=blue fontcolor=red shape=box]
-	"potencia : 100000.0" [color=blue fontcolor=red shape=box]
-	"suma ":" 100005.32" -> "potencia ":" 100000.0"
-	valor1_1865367435984 [label=10 color=blue fontcolor=red shape=box]
-	"potencia ":" 100000.0" -> valor1_1865367435984
-	"division : 5.0" [color=blue fontcolor=red shape=box]
-	"potencia ":" 100000.0" -> "division ":" 5.0"
-	valor1_1865367488400 [label=15 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor1_1865367488400
-	valor2_1865367488592 [label=3 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor2_1865367488592
-	valor2_1865367488784 [label=5.32 color=blue fontcolor=red shape=box]
-	"suma ":" 100005.32" -> valor2_1865367488784
-	"resta : -995.5" [color=blue fontcolor=red shape=box]
-	valor1_1865367489296 [label=4.5 color=blue fontcolor=red shape=box]
-	"resta ":" -995.5" -> valor1_1865367489296
-	"potencia : 1000" [color=blue fontcolor=red shape=box]
-	"resta ":" -995.5" -> "potencia ":" 1000"
-	valor1_1865367489616 [label=10 color=blue fontcolor=red shape=box]
-	"potencia ":" 1000" -> valor1_1865367489616
-	valor2_1865367490064 [label=3 color=blue fontcolor=red shape=box]
-	"potencia ":" 1000" -> valor2_1865367490064
-	"suma : 6.213996663600558" [color=blue fontcolor=red shape=box]
-	"seno : 0.8939966636005579" [color=blue fontcolor=red shape=box]
-	"suma ":" 6.213996663600558" -> "seno ":" 0.8939966636005579"
-	valor1_1865367491024 [label=90 color=blue fontcolor=red shape=box]
-	"seno ":" 0.8939966636005579" -> valor1_1865367491024
-	valor2_1865367491216 [label=5.32 color=blue fontcolor=red shape=box]
-	"suma ":" 6.213996663600558" -> valor2_1865367491216
-	"multiplicacion : 21" [color=blue fontcolor=red shape=box]
-	valor1_1865367491728 [label=7 color=blue fontcolor=red shape=box]
-	"multiplicacion ":" 21" -> valor1_1865367491728
-	valor2_1865367491984 [label=3 color=blue fontcolor=red shape=box]
-	"multiplicacion ":" 21" -> valor2_1865367491984
-	"division : 5.0" [color=blue fontcolor=red shape=box]
-	valor1_1865367492368 [label=15 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor1_1865367492368
-	valor2_1865367492496 [label=3 color=blue fontcolor=red shape=box]
-	"division ":" 5.0" -> valor2_1865367492496
+	label="realizacion de operaciones"
+	"resta : 3.0" [color=green fontcolor=black shape=circle]
+	valor1_2495050356432 [label=6.5 color=green fontcolor=black shape=circle]
+	"resta ":" 3.0" -> valor1_2495050356432
+	valor2_2495050350672 [label=3.5 color=green fontcolor=black shape=circle]
+	"resta ":" 3.0" -> valor2_2495050350672
+	"suma : 7.62" [color=green fontcolor=black shape=circle]
+	valor1_2495050351312 [label=2.3 color=green fontcolor=black shape=circle]
+	"suma ":" 7.62" -> valor1_2495050351312
+	valor2_2495050352080 [label=5.32 color=green fontcolor=black shape=circle]
+	"suma ":" 7.62" -> valor2_2495050352080
+	"multiplicacion : 2.0561923262812827" [color=green fontcolor=black shape=circle]
+	valor1_2495050352720 [label=2.3 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 2.0561923262812827" -> valor1_2495050352720
+	"seno : 0.8939966636005579" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 2.0561923262812827" -> "seno ":" 0.8939966636005579"
+	valor1_2495050354384 [label=90 color=green fontcolor=black shape=circle]
+	"seno ":" 0.8939966636005579" -> valor1_2495050354384
+	"division : 0.37593984962406013" [color=green fontcolor=black shape=circle]
+	"mod : 2" [color=green fontcolor=black shape=circle]
+	"division ":" 0.37593984962406013" -> "mod ":" 2"
+	valor1_2495050357584 [label=17 color=green fontcolor=black shape=circle]
+	"mod ":" 2" -> valor1_2495050357584
+	valor2_2495050357520 [label=5 color=green fontcolor=black shape=circle]
+	"mod ":" 2" -> valor2_2495050357520
+	valor2_2495050357904 [label=5.32 color=green fontcolor=black shape=circle]
+	"division ":" 0.37593984962406013" -> valor2_2495050357904
+	"resta : 6.6" [color=green fontcolor=black shape=circle]
+	valor1_2495050358288 [label=7.8 color=green fontcolor=black shape=circle]
+	"resta ":" 6.6" -> valor1_2495050358288
+	valor2_2495050358480 [label=1.2 color=green fontcolor=black shape=circle]
+	"resta ":" 6.6" -> valor2_2495050358480
+	"suma : 11.2" [color=green fontcolor=black shape=circle]
+	valor1_2495050358928 [label=4.5 color=green fontcolor=black shape=circle]
+	"suma ":" 11.2" -> valor1_2495050358928
+	valor2_2495050359120 [label=6.7 color=green fontcolor=black shape=circle]
+	"suma ":" 11.2" -> valor2_2495050359120
+	"multiplicacion : 15.072" [color=green fontcolor=black shape=circle]
+	valor1_2495050359248 [label=3.14 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 15.072" -> valor1_2495050359248
+	"resta : 4.8" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 15.072" -> "resta ":" 4.8"
+	valor1_2495050361872 [label=9.6 color=green fontcolor=black shape=circle]
+	"resta ":" 4.8" -> valor1_2495050361872
+	valor2_2495050362064 [label=4.8 color=green fontcolor=black shape=circle]
+	"resta ":" 4.8" -> valor2_2495050362064
+	"suma : 9.0" [color=green fontcolor=black shape=circle]
+	valor1_2495050362512 [label=1.11 color=green fontcolor=black shape=circle]
+	"suma ":" 9.0" -> valor1_2495050362512
+	valor2_2495050362704 [label=7.89 color=green fontcolor=black shape=circle]
+	"suma ":" 9.0" -> valor2_2495050362704
+	"multiplicacion : 33.3" [color=green fontcolor=black shape=circle]
+	valor1_2495050363216 [label=6.66 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 33.3" -> valor1_2495050363216
+	"resta : 5.0" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 33.3" -> "resta ":" 5.0"
+	valor1_2495050365456 [label=10.5 color=green fontcolor=black shape=circle]
+	"resta ":" 5.0" -> valor1_2495050365456
+	valor2_2495050365584 [label=5.5 color=green fontcolor=black shape=circle]
+	"resta ":" 5.0" -> valor2_2495050365584
+	"suma : 11.100000000000001" [color=green fontcolor=black shape=circle]
+	valor1_2495050366096 [label=2.22 color=green fontcolor=black shape=circle]
+	"suma ":" 11.100000000000001" -> valor1_2495050366096
+	valor2_2495050366288 [label=8.88 color=green fontcolor=black shape=circle]
+	"suma ":" 11.100000000000001" -> valor2_2495050366288
+	"multiplicacion : -1.6916989471173025" [color=green fontcolor=black shape=circle]
+	valor1_2495050366736 [label=5.55 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" -1.6916989471173025" -> valor1_2495050366736
+	"seno : -0.3048106211022167" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" -1.6916989471173025" -> "seno ":" -0.3048106211022167"
+	valor1_2495050367312 [label=60 color=green fontcolor=black shape=circle]
+	"seno ":" -0.3048106211022167" -> valor1_2495050367312
+	"resta : 6.3999999999999995" [color=green fontcolor=black shape=circle]
+	valor1_2495050368976 [label=8.7 color=green fontcolor=black shape=circle]
+	"resta ":" 6.3999999999999995" -> valor1_2495050368976
+	valor2_2495050369168 [label=2.3 color=green fontcolor=black shape=circle]
+	"resta ":" 6.3999999999999995" -> valor2_2495050369168
+	"suma : 13.32" [color=green fontcolor=black shape=circle]
+	valor1_2495050369616 [label=3.33 color=green fontcolor=black shape=circle]
+	"suma ":" 13.32" -> valor1_2495050369616
+	valor2_2495050369808 [label=9.99 color=green fontcolor=black shape=circle]
+	"suma ":" 13.32" -> valor2_2495050369808
+	"multiplicacion : -3.0130633071312745" [color=green fontcolor=black shape=circle]
+	valor1_2495050370256 [label=7.77 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" -3.0130633071312745" -> valor1_2495050370256
+	"seno : -0.38778163540943045" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" -3.0130633071312745" -> "seno ":" -0.38778163540943045"
+	valor1_2495050370896 [label=75 color=green fontcolor=black shape=circle]
+	"seno ":" -0.38778163540943045" -> valor1_2495050370896
+	"division : 0.7507507507507507" [color=green fontcolor=black shape=circle]
+	"raiz : 5.0" [color=green fontcolor=black shape=circle]
+	"division ":" 0.7507507507507507" -> "raiz ":" 5.0"
+	valor1_2495050371856 [label=25 color=green fontcolor=black shape=circle]
+	"raiz ":" 5.0" -> valor1_2495050371856
+	valor2_2495050372048 [label=2 color=green fontcolor=black shape=circle]
+	"raiz ":" 5.0" -> valor2_2495050372048
+	valor2_2495050372304 [label=6.66 color=green fontcolor=black shape=circle]
+	"division ":" 0.7507507507507507" -> valor2_2495050372304
+	"resta : 4.699999999999999" [color=green fontcolor=black shape=circle]
+	valor1_2495050372752 [label=5.6 color=green fontcolor=black shape=circle]
+	"resta ":" 4.699999999999999" -> valor1_2495050372752
+	valor2_2495050372944 [label=0.9 color=green fontcolor=black shape=circle]
+	"resta ":" 4.699999999999999" -> valor2_2495050372944
+	"suma : 12.21" [color=green fontcolor=black shape=circle]
+	valor1_2495050373392 [label=4.44 color=green fontcolor=black shape=circle]
+	"suma ":" 12.21" -> valor1_2495050373392
+	valor2_2495050373584 [label=7.77 color=green fontcolor=black shape=circle]
+	"suma ":" 12.21" -> valor2_2495050373584
+	"multiplicacion : 888.0000000000001" [color=green fontcolor=black shape=circle]
+	valor1_2495050374032 [label=8.88 color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 888.0000000000001" -> valor1_2495050374032
+	"potencia : 100" [color=green fontcolor=black shape=circle]
+	"multiplicacion ":" 888.0000000000001" -> "potencia ":" 100"
+	valor1_2495050374672 [label=10 color=green fontcolor=black shape=circle]
+	"potencia ":" 100" -> valor1_2495050374672
+	valor2_2495050374864 [label=2 color=green fontcolor=black shape=circle]
+	"potencia ":" 100" -> valor2_2495050374864
+	"division : 0.0" [color=green fontcolor=black shape=circle]
+	"mod : 0" [color=green fontcolor=black shape=circle]
+	"division ":" 0.0" -> "mod ":" 0"
+	valor1_2495050375824 [label=25 color=green fontcolor=black shape=circle]
+	"mod ":" 0" -> valor1_2495050375824
+	valor2_2495050376016 [label=5 color=green fontcolor=black shape=circle]
+	"mod ":" 0" -> valor2_2495050376016
+	valor2_2495050376272 [label=8.88 color=green fontcolor=black shape=circle]
+	"division ":" 0.0" -> valor2_2495050376272
+	"resta : 1.2999999999999998" [color=green fontcolor=black shape=circle]
+	valor1_2495050376720 [label=3.4 color=green fontcolor=black shape=circle]
+	"resta ":" 1.2999999999999998" -> valor1_2495050376720
+	valor2_2495050376912 [label=2.1 color=green fontcolor=black shape=circle]
+	"resta ":" 1.2999999999999998" -> valor2_2495050376912
+	"suma : 12.21" [color=green fontcolor=black shape=circle]
+	valor1_2495050377360 [label=5.55 color=green fontcolor=black shape=circle]
+	"suma ":" 12.21" -> valor1_2495050377360
+	valor2_2495050377552 [label=6.66 color=green fontcolor=black shape=circle]
+	"suma ":" 12.21" -> valor2_2495050377552
 }
